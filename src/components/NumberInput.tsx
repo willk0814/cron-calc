@@ -11,11 +11,12 @@ export default function NumberInput({ pos }: InputProps) {
     }, []);
 
     return (
-        <div>
+        <div className='w-[60px] h-[60px]'>
             <input
-                className="bg-white bg-opacity-20 rounded-lg w-[60px] text-center p-2 text-3xl border-2 border-transparent
-                placeholder-white placeholder:text-3xl
+                className="bg-white bg-opacity-20 rounded-lg w-full h-full text-center text-3xl border-2 border-transparent
+                placeholder-gray-200 placeholder:text-4xl placeholder:py-3
                 focus:outline-none focus:border-white focus:border-2"
+                maxLength={2}
                 placeholder="*" />
         </div>
     )
