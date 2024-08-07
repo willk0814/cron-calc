@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 
 interface InputProps {
     pos: string;
+    handleFocus: () => void;
+    handleBlur: () => void;
 };
 
-export default function NumberInput({ pos }: InputProps) {
+export default function NumberInput({ pos, handleFocus, handleBlur }: InputProps) {
 
     useEffect(() => {
         console.log(`Position within cron string: ${pos}`)
@@ -15,9 +17,12 @@ export default function NumberInput({ pos }: InputProps) {
             <input
                 className="bg-white bg-opacity-20 rounded-lg w-full h-full text-center text-3xl border-2 border-transparent
                 placeholder-gray-200 placeholder:text-4xl placeholder:py-3
-                focus:outline-none focus:border-white focus:border-2"
+                focus:outline-none focus:border-white focus:border-2
+                "
                 maxLength={2}
-                placeholder="*" />
+                placeholder="＊"
+                onFocus={handleFocus}
+                onBlur={handleBlur} />
         </div>
     )
 }
