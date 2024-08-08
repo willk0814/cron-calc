@@ -5,22 +5,24 @@ import { useState } from 'react';
 import NumberInput from "./NumberInput";
 
 // Import motion for animations
-import { animate, AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // Import Submit Icon
 import { IoCopyOutline } from "react-icons/io5";
+import InputInfo from './InputInfo';
 
 
 export default function InputContainer() {
 
     // SV to hold label state
-    const [displayLabel, setDisplayLabel] = useState<string | null>(null)
+    const [displayLabel, setDisplayLabel] = useState<string | null>(null);
+    const [displayRange, setDisplayRange] = useState<number[] | null>(null);
 
     // -- Number Input Focus Funcs -- 
     // handle begin focus
-    const handleFocus = (label: string) => {
-        console.log(label)
+    const handleFocus = (label: string, range: number[]) => {
         setDisplayLabel(label)
+        setDisplayRange(range)
     }
 
     // handle end focus
@@ -30,11 +32,11 @@ export default function InputContainer() {
 
     // cron schedule positions and signifigance
     const cron_syntax = [
-        { key: 'minute', label: 'minute (0 - 59)' },
-        { key: 'hour', label: 'hour (0 - 23)' },
-        { key: 'day', label: 'day of the month (1 - 31)' },
-        { key: 'month', label: 'month (1 - 12)' },
-        { key: 'weekday', label: 'day of the week (0 - 6) (Sunday to Saturday)' }
+        { key: 'minute', label: 'minute', range: [0, 59] },
+        { key: 'hour', label: 'hour', range: [0, 23] },
+        { key: 'day', label: 'day of the month', range: [1, 31] },
+        { key: 'month', label: 'month', range: [1, 12] },
+        { key: 'weekday', label: 'day of the week', range: [0, 6] }
     ];
 
     return (
@@ -52,7 +54,7 @@ export default function InputContainer() {
                 }}
                 initial='initial'
                 animate='animate'
-                className='bg-white bg-opacity-20 rounded-lg flex flex-col items-center pb-2 justify-center px-2'>
+                className='bg-white bg-opacity-20 rounded-lg flex flex-col items-start pb-2 justify-center px-2 border-2 border-white justify-start'>
 
                 {/* Number Inputs & Submit Button */}
                 <div className='flex flex-row items-center space-x-2 mt-3 mb-1'>
@@ -61,7 +63,7 @@ export default function InputContainer() {
                         <NumberInput
                             key={indx}
                             pos={item.key}
-                            handleFocus={() => handleFocus(item.label)}
+                            handleFocus={() => handleFocus(item.label, item.range)}
                             handleBlur={handleBlur} />
                     ))}
 
@@ -83,7 +85,7 @@ export default function InputContainer() {
                         variants={{
                             initial: { height: 0, opacity: 0 },
                             animate: {
-                                height: '30px', opacity: 1,
+                                height: '40px', opacity: 1,
                                 transition: { when: 'beforeChildren' }
                             },
                             exit: {
@@ -94,8 +96,10 @@ export default function InputContainer() {
                         initial='initial'
                         animate={displayLabel !== null ? 'animate' : ''}
                         exit='exit'
-                        className='flex flex-row w-full'>
-                        {displayLabel}
+                        className='flex flex-row items-center w-full'>
+                        <InputInfo
+                            label={displayLabel}
+                            range={displayRange} />
                     </motion.div>
                 </AnimatePresence>
 
