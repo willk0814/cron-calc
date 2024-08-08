@@ -108,9 +108,7 @@ export default function InputContainer({ handleUpdateCronString, handleChangeFoc
     }, [focusIndx])
 
     return (
-        <div className="flex flex-col items-center">
-            {/* Title */}
-            <h1 className="text-center text-3xl sm:text-6xl pb-4">Cron Syntax Helper</h1>
+        <div className="flex flex-col items-center w-[95vw] max-w-[750px]">
 
             <motion.div
                 variants={{
@@ -122,10 +120,10 @@ export default function InputContainer({ handleUpdateCronString, handleChangeFoc
                 }}
                 initial='initial'
                 animate='animate'
-                className='bg-white bg-opacity-20 rounded-lg flex flex-col items-start pb-2 justify-center px-2 w-[95vw] max-w-fit'>
+                className='bg-white bg-opacity-20 rounded-lg flex flex-col items-start pb-2 justify-center px-2'>
 
                 {/* Number Inputs & Submit Button */}
-                <div className='flex flex-row items-center space-x-2 mt-3 mb-1'>
+                <div className='flex flex-row items-center space-x-2 mt-3 mb-1 overflow-scroll'>
                     {/* Number Inputs */}
                     {cron_syntax.map((item, indx) => (
                         <NumberInput

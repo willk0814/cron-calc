@@ -35,12 +35,12 @@ export default function OutputContainer({ cronString, focusIndx }: Props) {
                 <motion.div
                     variants={{
                         initial: { opacity: 0, y: '-10%' },
-                        animate: { opacity: 1, y: 0 }
+                        animate: { opacity: 1, y: 0, transition: { duration: 0.3 } }
                     }}>
                     <NumberOutput
                         key={indx}
                         val={val}
-                        pos={cron_syntax[indx].key}
+                        // pos={cron_syntax[indx].key}
                         focus={focusIndx === indx}
                         label={cron_syntax[indx].label} />
                 </motion.div>

@@ -35,7 +35,7 @@ export default function NumberInput({ handleFocus, handleBlur, value, onChange, 
     }
 
     return (
-        <div className='w-[60px] h-[60px]'>
+        <div className='w-fit h-[60px]'>
             <input
                 className={`bg-white bg-opacity-20 rounded-lg w-full h-full text-center text-4xl 
                 border-2 ${outOfBounds ? 'border-red-600' : 'border-transparent'}
