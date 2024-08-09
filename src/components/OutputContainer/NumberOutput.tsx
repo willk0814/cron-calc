@@ -18,7 +18,7 @@ export default function NumberOutput({ val, focus, label }: OutputProps) {
             {/* Info Container */}
 
             <div className='bg-gray-700 bg-opacity-70 rounded-md flex p-1 px-2'>
-                <h1 className="text-lg font-bold text-blue-300">{val === '﹡' ? `Every ${label}` : `At ${label} ${val}`}</h1>
+                <h1 className="text-lg font-bold text-blue-300">{val === '﹡' ? `Every ${label}` : `On ${label} ${val}`}</h1>
             </div>
         </div>
     )
