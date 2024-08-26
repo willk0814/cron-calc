@@ -40,7 +40,7 @@ export default function OutputContainer({ cronString, focusIndx }: Props) {
                     <NumberOutput
                         key={indx}
                         val={val}
-                        // pos={cron_syntax[indx].key}
+                        range={cron_syntax[indx].range}
                         focus={focusIndx === indx}
                         label={cron_syntax[indx].label} />
                 </motion.div>

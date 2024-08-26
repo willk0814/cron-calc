@@ -140,7 +140,7 @@ export default function InputContainer({ handleUpdateCronString, handleChangeFoc
                     <button
                         className='bg-white bg-opacity-20 p-1 border-2 border-transparent 
                         hover:border-white hover:outline-none focus:outline-none
-                        disabled:bg-gray-400 disabled:hover:border-transparent'
+                        disabled:bg-red-300 disabled:bg-opacity-60 disabled:hover:border-transparent'
                         disabled={!validString}
                         onClick={copyToClipboard}>
                         <IoCopyOutline size={35} color="white" />
