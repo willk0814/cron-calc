@@ -12,18 +12,25 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build app
         run: npm run build
+        
+      - name: Check build output
+        run: |
+          echo "Current directory contents:"
+          ls -R
+          echo "Dist directory contents (if it exists):"
+          ls -R dist || echo "dist directory not found"
 
       - name: Upload to S3
         uses: jakejarvis/s3-sync-action@master
